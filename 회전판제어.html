@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //문서가 로드되면, 기존에 없었던 이미지객체를 생성하여,
+        //body에 삽입하자.
+        let img; //모든 영역에서 접근할수있도록 전역으로 선언
+        let r = 0;
+        let flag=false;
+        function setRotate(){
+            if(flag){
+                r =r+5;
+            }
+            img.style.transform="rotate("+r+"deg)";
+        }
+       addEventListener("load", function(){
+            img=document.createElement("img");
+            img.src="../images/dartboard.jpg";
+            img.style.width=500+"px";
+            img.style.position="absolute";
+            img.style.top=200+"px";
+            document.body.appendChild(img);
+            //생성된 이미지를 자동으로 돌리자
+            setInterval("setRotate()", 100)
+       });
+
+
+    </script>
+
+
+
+</head>
+<body>
+    <button onClick="flag=!flag">판돌리기</button>  
+</body>
+</html>

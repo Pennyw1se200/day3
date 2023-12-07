@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 200px;
+            position: relative;
+            background-color: darkgray;
+            display: flex;
+            align-items: center;
+            box-shadow: 2px 2px 2px 2px;
+            margin-top: 300px;
+            border-radius: 30px;
+            font-size: 30px;
+        }
+        #wrapper:hover {
+            /* display: none; */
+        }
+        input {
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 70px;
+            box-shadow: 1px 1px 2px 2px;
+            margin: 10px;
+            text-align: center;
+        }
+        #bt {
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 22px;
+            box-shadow: 2px 2px 2px 2px;
+        }
+    </style>
+    <script>
+        let sec=0; //초가 누적될 전역변수
+        let min=0; //분이 누절될 전역변수
+        let hour=0; //시간을 누적시킬 전역변수
+
+        function start(){
+            //시 분 초 값을 적절히 증가시켜보자
+            let t_s=document.getElementById("t_s");
+            let t_m=document.getElementById("t_m");
+            let t_h=document.getElementById("t_h");
+            
+            flag=!flag;
+
+            if(flag){
+                sec++;
+                //sec의 값을 증가시키다가 60이상이 되면 다시 0으로 초기화
+                if(sec >=60){
+                    sec=0;
+                    min++;
+                }else if(min >= 60){
+                    min=0;
+                    hour++;
+                }
+            }
+            t_s.value=sec;
+            t_m.value=min;
+            t_h.value=hour;
+
+
+            //setInterval("함수(), 시간간격")은 지정된 시간간격으로 무한호출
+            //setTimeout("함수(), 시간간격")은 지정된 시간간격후에 함수를 1회만호출
+            //재귀호출시 이용할수 있다...
+            // setTimeout("showTime()", 1);
+        
+            function start(){
+                setInterval("showTime()", 1);
+            }
+            //버튼을누를때 마다 flag의 상태뒤집기
+            //버튼을 누를때 마다 버튼이 제목도 뒤집기
+            function effect(){
+                flag=!flag;
+                if(flag){//시계가 작동하고 있으므로, stop 이 떠야함
+                    document.getElementById("bt").innerText="Stop";
+                }else{
+                    document.getElementById("bt").innerText="Start";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <input id="t_h" type="text" value="00">시
+        <input id="t_m" type="text" value="00">분
+        <input id="t_s" type="text" value="00">초
+        <button id="bt" onClick="start(); effect();">Start</button>
+    </div>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

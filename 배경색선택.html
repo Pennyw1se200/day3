@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        addEventListener("load", function(){
+            //입력한 값이 n이라는 변수에 저장됨
+            let n=prompt("1.red\n2.orange\n3.yellow\n4.green\n5.blue\n6.navy\n7.purple");
+            let c ="";//else 는 참을 만나면 다음 요소는 실행하지않는다
+            // if(n==1){
+            //     c="red";
+            // }else if(n==2){
+            //     c="orange"
+            // }else if(n==3){
+            //     c="yellow"
+            // }else if(n==4){
+            //     c="green"
+            // }else if(n==5){
+            //     c="blue"
+            // }else if(n==6){
+            //     c="navy"
+            // }else if(n==7){
+            //     c="purple"
+            // }else{
+            //     alert("1에서 7사이만 입력하세요.");
+            // }
+            //else if 문과 목적상 동일한 효과를 내지만, 코드를 보다 줄여쓸수있는 
+            //문장이 switch case문이다
+            //프롬프트로 입력받은 데이터는 문자열로 취급되므로, 따라서 정수로 변경
+            n=parseInt(n);
+            switch(n){
+                case 1: c="red";break;
+                case 2: c="orange";break;
+                case 3: c="yellow";break;
+                case 4: c="green";break;
+                case 5: c="blue";break;
+                case 6: c="navy";break;
+                case 7: c="purple";break;
+                default:alert("1~7까지 선택");
+            }
+        
+
+            document.body.style.background=c;
+        });
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

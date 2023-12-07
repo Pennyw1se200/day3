@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 500px;
+            margin: auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        input{
+            width: 95%;
+
+        }
+        .email_id {
+            width: 50%;
+        }
+        .birth{
+            width: 50%;
+        }
+    </style>
+    <script>
+        //입력양식을 이루는 각컴포넌트에제대로 된   
+        function regist(){
+            //아이디를 입력하지 않으면 알림!
+            if(form1.id.value==""){
+                alert("아이디를 입력하세요");
+                form1.id.focus();
+            }else if(form1.pass.value==""){
+                alert("비번입력") 
+                form1.pass.focus()
+            }else{    
+                form1.action="http://google.com";
+                form1.submit();//전송
+                form1.action.focus();
+            }
+        }
+        //사용자가 입력한 데이터가 1이면 남성출력, 2이면여성출력
+        function getGender(){
+            let v = document.getElementById("penny").value;
+            if(v==1){
+                document.getElementById("gender").innerText ="남성";
+            }else if(v==2){
+                document.getElementById("gender").innerText ="여성";
+            }else{
+                document.getElementById("gender").innerText="올바르지않은 입력";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- id, name 공통점은 태그요소를 접근하기위함인데 id는 중복불가능 
+        name 은 class와 마찬가지로중복가능 특히 name은 서버에 데이터를 전송할때, 변수 역활을 수행 -->
+        <form name="form1">
+            <div>
+                <input type="text" placeholder="ID 입력하세요." name="id">
+            </div>
+            <div>
+                <input type="text" placeholder="비밀번호를 입력하세요." name="pass">
+            
+            </div>
+            <div>
+                <input type="text" class="email_id" placeholder="email입력" name="email_id">
+                <select>
+                    <option>이메일선택</option>
+                    <option value="google.com">구글</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="daum.com">다음</option>
+                </select>
+            </div>
+            <div>
+                <input name="penny" class="birth" type="text" placeholder="출생일 예)852132">
+                <input id="penny" name="penny" class="birth" type="text" placeholder="1*******" maxlength="1"onKeyup="getGender()">
+
+            </div>
+            <div id="gender"></div>
+            <div>
+                <!-- html5의 button태그는 기본적으로 전송(submit)기능이 포함되어 있으므로
+                form태그안에 둘경우 자동전송을 일으킨다.
+                submit기능 비활성화 -->
+                <button type="button" onclick="regist()">회원가입</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
